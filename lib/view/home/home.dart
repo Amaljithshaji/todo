@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hive/hive.dart';
 import 'package:intl/intl.dart';
 //import 'package:todo/view/home/widgets/showmodel.dart';
 
@@ -16,7 +17,7 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-
+var box =  Hive.openBox('notbox');
   @override
   initState() {
     loadDbData();
@@ -245,6 +246,7 @@ class _HomeState extends State<Home> {
                       print(_dateController.text);
                       print(_descriptionController.text);
                       print(obj.MyList.length);
+                      
                       
                       setState(() {
                         

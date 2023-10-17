@@ -4,14 +4,11 @@ import 'package:todo/models/notes_model.dart';
 import 'view/home/home.dart';
 
 
-Future<void> main()  async {
+void main()  async {
   await Hive.initFlutter();
-  
-  var box = await Hive.openBox('notbox');
-
-  
   Hive.registerAdapter(MyModelAdapter());
-  runApp(const MyApp());
+ var box = await Hive.openBox('notbox');
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {

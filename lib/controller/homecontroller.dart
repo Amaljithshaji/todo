@@ -6,20 +6,22 @@ class Home_Controller{
     
 
   ]; 
+  
 final Mybox = Hive.box('notbox');
   void addnew(MyModel newModel){
     MyList.add(newModel);
+    //loadbox();
     updatedb();
+    
   }
 
   void delete(int index){
     MyList.removeAt(index);
     updatedb();
   }
-  loadbox() async {
-   MyList = await Mybox.get('notedatalist') ?? [];
-  }
+  loadbox()  {
+    MyList = Mybox.get('newmodel')!.cast<MyModel>();  }
   updatedb(){
-    Mybox.put("notedatalist", MyList);
+    Mybox.put('newmodel',MyList);
   }
 }
